@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 
-const mongoURI = 'mongodb+srv://user:user@jms.c0vv4uq.mongodb.net/?retryWrites=true&w=majority&appName=JMS';
+const mongoURI = 'mongodb+srv://user:user@jms.c0vv4uq.mongodb.net/JMS?retryWrites=true&w=majority';
 
 mongoose.connect(mongoURI);
 
