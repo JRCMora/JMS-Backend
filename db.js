@@ -4,8 +4,7 @@ const mongoose = require('mongoose');
 
 const mongoURI = 'mongodb+srv://user:user@jms.c0vv4uq.mongodb.net/JMS';
 
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
-
+mongoose.connect(mongoURI);
 
 const db = mongoose.connection;
 
