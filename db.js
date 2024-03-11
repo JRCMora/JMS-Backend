@@ -1,14 +1,12 @@
-// db.js
+const mongoose = require('mongoose')
 
-const mongoose = require('mongoose');
+const connectDB = async () => {
+    try {
+        await mongoose.connect(process.env.MONGODB_CONNECT_URI)
+        console.log("Connect to MongoDB successfully")
+    } catch (error) {
+        console.log("Connect failed " + error.message )
+    }
+}
 
-const mongoURI = 'mongodb+srv://user:user@jms.c0vv4uq.mongodb.net/JMS?retryWrites=true&w=majority';
-
-mongoose.connect(mongoURI);
-
-const db = mongoose.connection;
-
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', () => {
-  console.log('Connected to MongoDB');
-});
+module.exports = connectDB

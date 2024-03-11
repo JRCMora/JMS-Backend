@@ -1,6 +1,15 @@
-const express = require('express');
+const express = require("express");
+
 const app = express();
-const bodyParser = require('body-parser');
+
+require("dotenv").config();
+
+app.use(express.json());
+
+const connectDB = require("./connectMongo");
+
+connectDB();
+
 const bcrypt = require('bcrypt');
 const User = require('./models/user');
 const Journal = require('./models/journal');
@@ -12,11 +21,7 @@ const crypto = require('crypto');
 const transporter = require('./models/email');
 const Rubric = require('./models/rubric');
 
-require('dotenv').config();
-require('./db')
-
 app.use(fileUpload());
-app.use(bodyParser.json());
 app.use('/uploads', express.static('uploads'));
 
 app.use((req, res, next) => { 
@@ -756,6 +761,8 @@ app.post('/check-email', async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
-    console.log('Server listening on port 3000')
-})
+const PORT = process.env.PORT;
+
+app.listen(PORT, () => {
+  console.log("Server is running on port " + PORT);
+});
